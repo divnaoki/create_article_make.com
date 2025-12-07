@@ -1,8 +1,0 @@
-services:
-  flask-app:
-    build: .
-    ports:
-      - "5020:5020"
-    environment:
-      # ↓ここにあなたのMake.comのWebhook URLを貼り付けてください
-      - MAKE_WEBHOOK_URL=https://hook.eu1.make.com/<PATH>
