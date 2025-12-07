@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Note記事ジェネレーター</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; padding-top: 40px; }
+        .container { max-width: 800px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .form-label { font-weight: bold; }
+        textarea { resize: vertical; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">📝 Note記事ジェネレーター</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="filename" class="form-label">[FILENAME] ファイル名（拡張子不要）</label>
+            <input type="text" class="form-control" id="filename" name="filename" placeholder="例: cafe_review_001" required>
+            <div class="form-text">Google Driveに保存される際のファイル名になります。</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="instruction" class="form-label">[INSTRUCTION] 執筆の指示・トーン</label>
+            <textarea class="form-control" id="instruction" name="instruction" rows="3" placeholder="例: 20代フリーランス向けに、親しみやすいトーンで..." required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="experience" class="form-label">[EXPERIENCE] 実体験・箇条書き</label>
+            <textarea class="form-control" id="experience" name="experience" rows="8" placeholder="・週末に駅前のカフェに行った&#13;&#10;・Wifiが完備されていた&#13;&#10;..." required></textarea>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg">記事を生成する</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
