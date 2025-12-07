@@ -5,4 +5,4 @@ services:
       - "5020:5020"
     environment:
       # ↓ここにあなたのMake.comのWebhook URLを貼り付けてください
-      - MAKE_WEBHOOK_URL=https://hook.eu1.make.com/zjm9eh867ve0vcjt89h0vyvi1kr95os8
+      - MAKE_WEBHOOK_URL=https://hook.eu1.make.com/<PATH>
